@@ -4,7 +4,7 @@ public class Productos {
 
     private String nombre;
     private String codigo;
-    private int precio;
+    private double precio;
     private int stock;
     private Proveedor proveedor;
 
@@ -14,7 +14,7 @@ public class Productos {
     }
 
 
-    public Productos(String nombre, String codigo, int precio, int stock, Proveedor proveedor) {
+    public Productos(String nombre, String codigo, double precio, int stock, Proveedor proveedor) {
         this.nombre = nombre;
         this.codigo = codigo;
         this.precio = precio;
@@ -39,11 +39,11 @@ public class Productos {
         this.codigo = codigo;
     }
 
-    public int getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(int precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
 
@@ -73,9 +73,20 @@ public class Productos {
         System.out.println("Ingrese el codigo del producto: ");
         this.codigo = sc.next();
         System.out.println("Ingrese el precio del producto");
-        this.codigo = sc.next();
+        this.precio = sc.nextDouble();
+
+        if (this.precio < 0){
+            System.out.println("====Ingrese un valor valido====");
+            this.precio = sc.nextDouble();
+        }
+
         System.out.println("Ingrese el stock del producto");
         this.stock = sc.nextInt();
+
+            if (this.stock < 0){
+                System.out.println("====Ingrese un valor valido====");
+                this.stock = sc.nextInt();
+            }
 
         proveedor = new Proveedor();
         proveedor.ingresarDatosProveedor();
